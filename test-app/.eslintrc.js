@@ -27,7 +27,7 @@ module.exports = {
     'array-bracket-spacing': 'off',
     'no-underscore-dangle': 'off',
     'no-param-reassign': 'off',
-    'import/extensions': [{ js: 'always', json: 'never' }],
+    'import/extensions': [1, { js: 'always', json: 'never' }],
     'no-plusplus': 'off',
     'object-curly-newline': 'warn',
     'class-methods-use-this': 'off',
