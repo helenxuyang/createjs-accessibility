@@ -27,4 +27,10 @@ jobs:
         run: |
           echo PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
           echo '<script>document.location.replace("'$PACKAGE_VERSION'");</script>' > index.html
+          echo mkdir $PACKAGE_VERSION
+          echo cd $PACKAGE_VERSION
+          echo > index.html
+          echo '<!DOCTYPE html><html><body><h1>Test</h1></body></html>' > index.html
+
+
 
