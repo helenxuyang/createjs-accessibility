@@ -19,12 +19,6 @@ jobs:
   build-test-app:
     steps:
       - working-directory: ./test-app
-        uses: actions/checkout@v2
-      - working-directory: ./test-app
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - working-directory: ./test-app
         run: |
           npm ci
           npm run lint
