@@ -21,11 +21,11 @@ jobs:
           npm ci
           npm run lint
           npm run build
+          echo PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
       - uses: actions/checkout@v2
         with:
           ref: 'gh-pages'
       - run: |
-          echo PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
           echo '<script>document.location.replace("'$PACKAGE_VERSION'");</script>' > index.html
           echo mkdir $PACKAGE_VERSION
           echo cd $PACKAGE_VERSION
