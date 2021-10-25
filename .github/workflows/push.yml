@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: 'gh-pages'
-        run: |
+      - run: |
           echo PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
           echo '<script>document.location.replace("'$PACKAGE_VERSION'");</script>' > index.html
           echo mkdir $PACKAGE_VERSION
