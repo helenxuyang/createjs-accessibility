@@ -35,9 +35,7 @@ jobs:
           ref: 'gh-pages'
       - name: Generate and commit GitHub page files
         run: |
-          echo -n "<script>document.location.replace(" > index.html
-          echo -n “${{ steps.get-package-version.outputs.PACKAGE_VERSION }}” >> index.html
-          echo -n ');' >> index.html
+          echo "test test test" > index.html
           mkdir ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
           cd ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
           echo > index.html
