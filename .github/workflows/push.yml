@@ -55,8 +55,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./test-app/dist
-          destination_dir: ./${{ steps.get-package-version.outputs.PACKAGE_VERSION }}/test-app
+          publish_dir: test-app/dist
+          destination_dir: ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}/test-app
       - name: Commit test app page
         run: |
           git config user.name github-actions
