@@ -9,28 +9,38 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout main
+        uses: actions/checkout@v2
+      - name: Set up node
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run build
-      - working-directory: ./test-app
+      - name: Lint and build CAM
         run: |
           npm ci
           npm run lint
           npm run build
-          echo PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
-      - uses: actions/checkout@v2
+      - name: Lint and build test app
+        working-directory: ./test-app
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+      - name: Get package version 
+        run: echo PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
+      - name: Check out gh-pages
+        uses: actions/checkout@v2
         with:
           ref: 'gh-pages'
-      - run: |
+      - name: Generate GitHub page files
+        run: |
           echo '<script>document.location.replace("'$PACKAGE_VERSION'");</script>' > index.html
           echo mkdir $PACKAGE_VERSION
           echo cd $PACKAGE_VERSION
           echo > index.html
           echo '<!DOCTYPE html><html><body><h1>Test</h1></body></html>' > index.html
+      - name: Commit GitHub page files
+        run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
