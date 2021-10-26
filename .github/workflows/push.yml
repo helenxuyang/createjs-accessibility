@@ -35,7 +35,7 @@ jobs:
           ref: 'gh-pages'
       - name: Generate and commit GitHub page files
         run: |
-          echo PACKAGE_VERSION=${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
+          echo PACKAGE_VERSION="${{ steps.get-package-version.outputs.PACKAGE_VERSION }}"
           echo '<script>document.location.replace("'$PACKAGE_VERSION'");</script>' > index.html
           echo mkdir $PACKAGE_VERSION
           echo cd $PACKAGE_VERSION
