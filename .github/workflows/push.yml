@@ -37,8 +37,8 @@ jobs:
         run: |
           echo PACKAGE_VERSION="${{ steps.get-package-version.outputs.PACKAGE_VERSION }}"
           echo '<script>document.location.replace("'$PACKAGE_VERSION'");</script>' > index.html
-          echo mkdir $PACKAGE_VERSION
-          echo cd $PACKAGE_VERSION
+          echo mkdir "$PACKAGE_VERSION"
+          echo cd "$PACKAGE_VERSION"
           echo > index.html
           echo '<!DOCTYPE html><html><body><h1>Test</h1></body></html>' > index.html
           git config user.name github-actions
