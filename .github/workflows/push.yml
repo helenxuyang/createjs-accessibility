@@ -36,10 +36,10 @@ jobs:
       - name: Generate and commit GitHub page files
         run: |
           echo "test test test" > index.html
-          mkdir ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
-          cd ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
-          echo > index.html
-          echo '<!DOCTYPE html><html><body><h1>Test</h1></body></html>' > index.html
+          # mkdir ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
+          # cd ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
+          # echo > index.html
+          # echo '<!DOCTYPE html><html><body><h1>Test</h1></body></html>' > index.html
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
