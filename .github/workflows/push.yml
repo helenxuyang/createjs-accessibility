@@ -39,22 +39,19 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: 'gh-pages'
-      - name: Generate and commit GitHub page files
+      - name: Generate and commit landing and test app pages
         run: |
-          # echo -n "<script>document.location.replace(" > index.html
-          # echo -n '"' >> index.html
-          # echo -n ${{ steps.get-package-version.outputs.PACKAGE_VERSION }} >> index.html
-          # echo -n '"' >> index.html
-          # echo -n ');</script>' >> index.html
-          # mkdir ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
-          # cd ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
-          # echo > index.html
-          # echo '<!DOCTYPE html><html><body><h1>Test</h1></body></html>' > index.html
-          # git config user.name github-actions
-          # git config user.email github-actions@github.com
-          # git add .
-          # git commit -m "Generated gh-pages files"
-          # git push
+          cp redirect-page.html index.html
+          sed -i 's/PACKAGE_VERSION/${{ steps.get-package-version.outputs.PACKAGE_VERSION }}/' index.html
+          mkdir ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
+          cd ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
+          cp ../base-page.html index.html 
+          sed -i 's/PACKAGE_VERSION/${{ steps.get-package-version.outputs.PACKAGE_VERSION }}/' index.html
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Generated gh-pages files"
+          git push
 
 
 
