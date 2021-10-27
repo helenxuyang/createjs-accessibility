@@ -43,6 +43,7 @@ jobs:
         run: |
           cp redirect-page.html index.html
           sed -i 's/PACKAGE_VERSION/${{ steps.get-package-version.outputs.PACKAGE_VERSION }}/' index.html
+          git add .
           cd ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}
           cp ../base-page.html index.html 
           sed -i 's/PACKAGE_VERSION/${{ steps.get-package-version.outputs.PACKAGE_VERSION }}/' index.html
