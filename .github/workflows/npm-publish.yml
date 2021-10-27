@@ -25,6 +25,10 @@ jobs:
           npm run build
       - name: Lint and build test app
         working-directory: ./test-app
+        run: |
+          npm ci
+          npm run lint
+          npm run build
       - name: Get package version
         id: get-package-version 
         run: echo "::set-output name=PACKAGE_VERSION::$(node -p -e 'require("./package.json").version')"
