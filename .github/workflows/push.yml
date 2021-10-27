@@ -35,13 +35,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: test-app/dist
           destination_dir: ${{ steps.get-package-version.outputs.PACKAGE_VERSION }}/test-app
-      - name: Commit test app page
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "Generated gh-pages test app build files"
-          git push
       - name: Check out gh-pages
         uses: actions/checkout@v2
         with:
